@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 from stdimage import StdImageField
 import uuid
@@ -55,7 +56,9 @@ class Funcionario(Base):
     nome = models.CharField('Nome', max_length=100)
     cargo = models.ForeignKey('core.Cargo', verbose_name='Cargo', on_delete=models.CASCADE)
     bio = models.TextField('Bio', max_length=200)
-    imagem = StdImageField('Imagem', upload_to=get_file_path, variations={'thumb': {'width': 480, 'height': 480, 'crop': True}})
+    imagem = StdImageField('Imagem', upload_to=get_file_path,
+                           variations={'thumb':  {'width': 480, 'height': 480, 'crop': True}}
+                           )
     facebook = models.CharField('Facebook', max_length=100, default='#')
     twitter = models.CharField('Twitter', max_length=100, default='#')
     instagram = models.CharField('Instagram', max_length=100, default='#')
@@ -86,3 +89,20 @@ class Recurso(Base):
 
     def __str__(self):
         return self.recurso
+
+
+class Cliente(Base):
+    nome = models.CharField('Nome', max_length=100)
+    cargo = models.ForeignKey('core.cargo', verbose_name='Cargo', on_delete=models.CASCADE)
+    bio = models.TextField('Bio', max_length=200)
+    imagem = StdImageField('Imagem', upload_to=get_file_path,
+                           variations={'thumb': {'width': 75, 'height': 75, 'crop': True}}
+                           )
+    nota = models.IntegerField('Nota', default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
+
+    class Meta:
+        verbose_name = 'Cliente'
+        verbose_name_plural = 'Clientes'
+
+    def __str__(self):
+        return self.nome

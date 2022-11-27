@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 
-from .models import Servico, Funcionario, Recurso
+from .models import Servico, Funcionario, Recurso, Cliente
 
 
 class IndexView(TemplateView):
@@ -13,4 +13,5 @@ class IndexView(TemplateView):
         context['recursos'] = Recurso.objects.order_by('?').all()
         context['meialista1'] = str(len(context['recursos']) // 2) + ':'
         context['meialista2'] = ':'.join(str(len(context['recursos']) // 2))
+        context['clientes'] = Cliente.objects.order_by('?').all()
         return context
