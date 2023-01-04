@@ -89,6 +89,8 @@ DATABASES = {
 }
 
 """
+Ler as configurações do Heroku e passa os dados para acesso ao banco
+
 DATABASES = {
     'default': dj_database_url.config()
 }
@@ -128,8 +130,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -147,6 +149,7 @@ EMAIL_HOST_PASSWORD = 'fusion'
 DEFAULT_FROM_EMAIL = 'contato@fusion.com.br
 """
 
+# Redirecionar para index quando fizer logout do admin
 # LOGOUT_REDIRECT_UTL = 'index'
 
 # Default primary key field type
