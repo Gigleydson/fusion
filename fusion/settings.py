@@ -33,14 +33,13 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'core',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'core',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'fusion',
         'USER': 'postgres',
-        'PASSWORD': 'Gihebel@0709',
+        'PASSWORD': 'Giebel@0709',
         'HOST': 'localhost',
         'PORT': '5432',
     }
